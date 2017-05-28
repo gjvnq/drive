@@ -6,6 +6,16 @@
 
 `drive` was originally developed by [Burcu Dogan](https://github.com/rakyll) while working on the Google Drive team. Since she is very busy and no longer able to maintain it, I took over drive on `Thursday, 1st January 2015`. This repository contains the latest version of the code.
 
+This particular fork is focoused on implementing (in the near future) a simple `autosync` subcommand that:
+  1) Compares the last modification date on local files with the ones stored when these files were last updated.
+  2) Does not touch both locally in the server with files which:
+    1) The files which last modification date have not changed.
+    2) The files which hashes have not modified.
+  3) On the remaining files the rules are:
+    1) If only the local copy has changed, it is uploaded.
+    2) If only the server copy has changed, it is downloaded.
+    3) If both have changed, the local file is renamed to indicate there was a sync conflict and is then uploaded. The server copy is downloaded with the original name.
+
 ## Table of Contents
 
 - [Installing](#installing)
